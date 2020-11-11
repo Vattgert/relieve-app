@@ -1,0 +1,5 @@
+const VoteResults = () => {
+
+}
+
+export { VoteResults };

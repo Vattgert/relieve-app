@@ -1,0 +1,110 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 420px!important;
+}
+
+.rollover{
+    position: relative;
+}
+
+.rollover:after{
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #202121;
+    opacity: 0;
+    z-index: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.rollover:hover:after{
+    opacity: 1;
+}
+
+.rollover .imageBox{
+    position: relative;
+    max-height: 295px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.rollover .image{
+    z-index: 1;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: translateZ(0);
+}
+
+.rollover:hover .image{
+    transform: scale(1.05);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.informationBox > div{
+    padding: 20px;
+}
+
+.title{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 12px;
+}
+
+.title, .authorName{
+    transition: color .3s ease-out;
+}
+
+.title:hover, .authorName .name:hover{
+    cursor: pointer;
+    color: #845EC2;
+    transition: color .3s ease-in;
+}
+
+.generalInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.author{
+    display: flex;
+    align-items: center;
+    padding: 11px 20px 10px 20px !important;
+    font-size: 13px;
+}
+
+.authorIcon{
+    background-color: #FBEAFF;
+}
+
+.authorIcon img{
+    width: 27px;
+    height: 27px;
+}
+
+.authorIcon, .authorIcon img{
+    border-radius: 50%;
+}
+
+.authorIcon img, .image{
+    object-fit: cover;
+}
+
+.authorName{
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.authorName .name{
+    transition: color .3s ease-out;
+}

@@ -1,0 +1,57 @@
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0px;
+}
+
+.upvoter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.upvoterInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.upvoterInfo .info{
+    font-style: italic;
+    margin: 3px 0;
+}
+
+.upvoterInfo .name, .upvoterInfo .country{
+    font-style: normal;
+    font-weight: 600;
+}
+
+.upvoterInfo .website{
+    font-size: 13px;
+    font-weight: 600;
+    color: #00C9A7;
+    transition: all 0.3s ease-in-out;
+}
+
+.website:hover{
+    color: inherit;
+}
+
+.votes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.votes > div{
+    margin-right: 10px;
+}
+
+.votes .average{
+    font-size: 28px;
+    margin-left: 10px;
+    font-weight: 300;
+}

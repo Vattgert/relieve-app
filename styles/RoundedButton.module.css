@@ -1,0 +1,30 @@
+.button{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 20px;
+    line-height: 34px;
+    color: #202121;
+    border: 1px solid #202121;
+    border-radius: 36px;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px;
+}
+
+.button:hover, .button.active{
+    border-color: #00C9A7;
+    color: #00C9A7;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.button svg{
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}

@@ -1,0 +1,117 @@
+.container{
+    padding-left: 66px;
+    padding-right: 66px;
+}
+
+.header{
+    align-items: center;
+    margin: 50px 0;
+}
+
+.header, .mainDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header h2{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.header ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.header ul li{
+    padding-left: 6px;
+}
+
+.likeButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+.likeButtons > div{
+    margin-left: 15px;
+}
+
+.content{
+    width: 1050px;
+    margin: 0 auto;
+    padding-left: 66px;
+    padding-right: 66px;
+}
+
+.image, .image img{
+    width: 100%;
+    max-height: 650px;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+}
+
+.mainDetails{
+
+}
+
+.date{
+
+}
+
+.description{
+    margin-top: 10px;
+}
+
+.tags{
+    margin-top: 25px;
+}
+
+.tags ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.tags ul li{
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.lastUpvotes{
+    padding: 35px;
+}
+
+.lastUpvotes ul{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.lastUpvotes ul li{
+    width: 100%;
+}
+
+.similarActivities{
+    padding: 50px 0;
+}
+
+.similarActivities .activitiesList{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.activitiesList li{
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+.activitiesList li:last-child{
+    margin-right: 0;
+}
