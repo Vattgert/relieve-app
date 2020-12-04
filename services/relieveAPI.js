@@ -20,9 +20,14 @@ class RelieveApi{
                 .then(response => response.json())
     }
 
-    getTours(){
+    getActivities(){
         this.requestOptions["method"] = "GET";
-        return this._request("/tours");
+        return this._request("/activities");
+    }
+
+    getActivity(activityId){
+        this.requestOptions["method"] = "GET"
+        return this._request(`/activities/${activityId}`);
     }
 
     getTopCategories(){

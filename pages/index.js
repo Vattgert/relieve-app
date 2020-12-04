@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    serviceApi.getTours().then(tours => setTours(tours));
+    serviceApi.getActivities().then(tours => setTours(tours));
   }, []);
 
   return (
