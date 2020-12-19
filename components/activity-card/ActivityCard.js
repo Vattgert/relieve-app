@@ -35,7 +35,7 @@ const ActivityCard = ({ activity: { id, title, date, image, host, country, city 
                     <div className={styles.authorName}>
                         <span style={{ fontWeight: 500 }}>By&nbsp;</span>
                         <span className={styles.name}>
-                            <Link href={`/profile/${encodeURIComponent(hostId)}`}><a>{fullName}</a></Link>
+                            <Link href={`/profiles/${encodeURIComponent(hostId)}`}><a>{fullName}</a></Link>
                         </span>
                     </div>
                 </div>

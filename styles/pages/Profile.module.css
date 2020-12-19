@@ -1,0 +1,48 @@
+.header{
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(155, 137, 179, .3);
+}
+
+.inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.blockMargin{
+    margin-top: 15px;
+}
+
+.row{
+    line-height: 25px;
+    margin-bottom: 6px;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.username{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    color: #202121;
+}
+
+.country{
+    color: #A6ABAB;
+    font-size: 13px;
+}
+
+.inner, .tabsContainer{
+    padding: 0 66px;
+}
+
+.activitiesContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 35px;
+    list-style-type: none;
+}

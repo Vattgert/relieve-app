@@ -36,7 +36,7 @@ const Activity = () => {
                         const { liker: {id, avatar} } = like;
                         return (
                             <li key={id}>
-                                <Link href={`/profile/${encodeURIComponent(id)}`}>
+                                <Link href={`/profiles/${encodeURIComponent(id)}`}>
                                     <a>
                                         <UserIcon image={avatar}/>
                                     </a>

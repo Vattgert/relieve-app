@@ -30,6 +30,16 @@ class RelieveApi{
         return this._request(`/activities/${activityId}`);
     }
 
+    getActivitiesByUser(userId){
+        this.requestOptions["method"] = "GET";
+        return this._request(`/profiles/${userId}/activities`);
+    }
+
+    getFavouriteActivities(userId){
+        this.requestOptions["method"] = "GET";
+        return this._request(`/profiles/${userId}/favourites`);
+    }
+
     getTopCategories(){
         this.requestOptions["method"] = "GET";
         return this._request("/categories/top");

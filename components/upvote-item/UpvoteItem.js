@@ -6,7 +6,6 @@ import { VoteCircle } from '../vote-circle';
 import styles from '../../styles/UpvoteItem.module.css';
 
 const UpvoteItem = ({ vote }) => {
-    console.log(vote);
     const { hostEvaluation, contentEvaluation, 
         satisfactionEvalution, valueForMoneyEvaluation, voter } = vote;
     const { avatar, firstName, lastName, country } = voter;
