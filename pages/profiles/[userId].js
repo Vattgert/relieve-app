@@ -13,22 +13,24 @@ import { useQuery } from '../../utils/useQuery';
 
 import styles from '../../styles/pages/Profile.module.css';
 
-const Profile = () => {
-    const [activities, setActivities] = useState([]);
-    const router = useRouter();
-    const { userId } = router.query;
-    
-    function getActivities(){
-        console.log("call");
-        serviceApi.getActivitiesByUser(userId).then((acts) => {
-            console.log(acts);
-            setActivities(acts);
-        });
-    }
 
-    function getFavouriteActivities(){
-        serviceApi.getFavouriteActivities(userId).then((acts) => {
-            console.log(acts);
+
+const Profile = () => {
+    const query = useQuery();
+
+    const [profile, setProfile] = useState(null);
+    const [activities, setActivities] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        if(query){
+            const { userId } = query;
+            serviceApi.getUserProfile(userId).then(setProfile);
+        }
+    }, [query]);
+    
+    function getActivities(params){
+        serviceApi.getActivities(params).then((acts) => {
             setActivities(acts);
         });
     }
@@ -43,6 +45,8 @@ const Profile = () => {
         )
     }
 
+    if(!profile)
+        return <div>No profile fetched</div>
     return (
         <div className="page">
             <Header isLoggedIn={false} isHost={false} />
@@ -51,12 +55,12 @@ const Profile = () => {
                     <div className={styles.inner}>
                         <RoundedButton text={"Follow"} />
                         <div className={styles.user}>
-                            <UserIcon image={"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Pierre-Person.jpg/220px-Pierre-Person.jpg"} size={"very-large"}/>
+                            <UserIcon image={profile.avatar} size={"very-large"}/>
                             <div className={`${styles.row} ${styles.blockMargin}`}>
-                                <span className={styles.username}>Ivan Tsiupa</span>
+                                <span className={styles.username}>{profile.firstName} {profile.lastName}</span>
                             </div>
                             <div className={styles.row}>
-                                <span className={styles.country}>Ukraine</span>
+                                <span className={styles.country}>{profile.country}</span>
                             </div>
                         </div>
                         <RoundedButton text={"Visit site"} />
@@ -64,12 +68,12 @@ const Profile = () => {
                 </div>
                 <div className={styles.tabsContainer}>
                     <Tabs> 
-                        <Tab label={"My Activities"} onClick={() => getActivities()}>
+                        <Tab label={"My Activities"} onClick={() => getActivities({ host: profile.id })}>
                             <ul className={styles.activitiesContainer}>
                                 { renderActivities(activities) }    
                             </ul>
                         </Tab>
-                        <Tab label={"Favourites"} onClick={() => getFavouriteActivities()}>
+                        <Tab label={"Favourites"} onClick={() => getActivities({ user: profile.id, liked: '' })}>
                             <ul className={styles.activitiesContainer}>
                                 { renderActivities(activities) }    
                             </ul>

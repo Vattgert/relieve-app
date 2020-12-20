@@ -1,48 +1,28 @@
+import { get } from './Api';
+
 class RelieveApi{
-    constructor(){
-        this.host = "http://api.relieve.com:3000";
-        this.apiVersion = '/v1';
-        this.requestOptions = {
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }
-    }
-
-    _getBaseUrl(){
-        return `${this.host}${this.apiVersion}`;
-    }
-
-    _request(route){
-        const url = `${this._getBaseUrl()}${route}`;
-        return fetch(url, this.requestOptions)
-                .then(response => response.json())
-    }
-
-    getActivities(){
-        this.requestOptions["method"] = "GET";
-        return this._request("/activities");
+    getActivities(params){
+        return get("/activities", params);
     }
 
     getActivity(activityId){
-        this.requestOptions["method"] = "GET"
-        return this._request(`/activities/${activityId}`);
+        return get(`/activities/${activityId}`);
     }
 
-    getActivitiesByUser(userId){
-        this.requestOptions["method"] = "GET";
-        return this._request(`/profiles/${userId}/activities`);
+    getActivitiesByUser(params){
+        return get(`/profiles/${userId}/activities`, params);
     }
 
     getFavouriteActivities(userId){
-        this.requestOptions["method"] = "GET";
-        return this._request(`/profiles/${userId}/favourites`);
+        return get(`/profiles/${userId}/favourites`);
     }
 
     getTopCategories(){
-        this.requestOptions["method"] = "GET";
-        return this._request("/categories/top");
+        return get("/categories/top");
+    }
+
+    getUserProfile(userId){
+        return get(`/profiles/${userId}`);
     }
 
     login(){
