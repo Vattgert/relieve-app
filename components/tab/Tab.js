@@ -1,12 +1,23 @@
+import { useEffect } from 'react';
+
 import styles from '../../styles/Tabs.module.css';
 
 const Tab = ({ activeTab, onClick, onSelect, label }) => {
 
-    const className = `${styles.item} ${activeTab === label ? styles.active : ""}`;
+    const isActiveTab = activeTab === label;
+    const className = `${styles.item} ${isActiveTab ? styles.active : ""}`;
+
+    useEffect(() => {
+        if(isActiveTab){
+            onClick();
+        }
+    }, []);
 
     function onTabClick(){
-        onClick();
-        onSelect(label);
+        if(!isActiveTab){
+            onClick();
+            onSelect(label);
+        }
     }
 
     return (

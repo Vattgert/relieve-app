@@ -68,12 +68,12 @@ const Profile = () => {
                 </div>
                 <div className={styles.tabsContainer}>
                     <Tabs> 
-                        <Tab label={"My Activities"} onClick={() => getActivities({ host: profile.id })}>
+                        <Tab label={"My Activities"} onClick={() => getActivities({ host: profile.id }) }>
                             <ul className={styles.activitiesContainer}>
                                 { renderActivities(activities) }    
                             </ul>
                         </Tab>
-                        <Tab label={"Favourites"} onClick={() => getActivities({ user: profile.id, liked: '' })}>
+                        <Tab label={"Favourites"} onClick={() => getActivities({ user: profile.id, liked: 'true' }) }>
                             <ul className={styles.activitiesContainer}>
                                 { renderActivities(activities) }    
                             </ul>

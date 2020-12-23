@@ -4,7 +4,7 @@ import { Tab } from './Tab';
 
 import styles from '../../styles/Tabs.module.css';
 
-const Tabs = ({ children }) => {
+const Tabs = ({ children, defaultAction }) => {
     const [activeTab, setActiveTab] = useState(children[0].props.label)
 
     function onClickTabItem(tab){
@@ -21,7 +21,7 @@ const Tabs = ({ children }) => {
                         key: child.props.label,
                         activeTab,
                         onSelect: onClickTabItem,
-                    })
+                    });
                 })
             }
             </ol>
