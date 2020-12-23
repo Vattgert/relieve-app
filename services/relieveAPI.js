@@ -9,14 +9,6 @@ class RelieveApi{
         return get(`/activities/${activityId}`);
     }
 
-    getActivitiesByUser(params){
-        return get(`/profiles/${userId}/activities`, params);
-    }
-
-    getFavouriteActivities(userId){
-        return get(`/profiles/${userId}/favourites`);
-    }
-
     getTopCategories(){
         return get("/categories/top");
     }
