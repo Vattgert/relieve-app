@@ -29,15 +29,6 @@
     padding-left: 6px;
 }
 
-.likeButtons{
-    display: flex;
-    flex-direction: row;
-}
-
-.likeButtons > div{
-    margin-left: 15px;
-}
-
 .content{
     width: 1050px;
     margin: 0 auto;

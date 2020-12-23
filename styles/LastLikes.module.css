@@ -1,0 +1,8 @@
+.likeButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+.likeButtons > div{
+    margin-left: 15px;
+}

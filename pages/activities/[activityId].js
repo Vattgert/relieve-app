@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 
 import { Header } from '../../components/header';
 import { Footer } from '../../components/footer';
-import { UserIcon } from '../../components/user-icon';
 import { RoundedButton } from '../../components/rounded-button';
 import { UpvoteItem } from '../../components/upvote-item';
 import { ActivityCard } from '../../components/activity-card';
+import { LastLikes } from '../../components/last-likes';
 
-import { AiFillHeart } from 'react-icons/ai';
 
 import serviceApi from '../../services/relieveAPI';
 import { useQuery } from '../../utils/useQuery';
@@ -25,34 +24,6 @@ const Activity = () => {
             serviceApi.getActivity(activityId).then(setActivity);
         }
     }, [query]);
-
-    function renderLastLikes(activity){
-        let { likes, totalLikes } = activity;
-        likes = likes || [];
-        return (
-            <ul>
-                {
-                    likes.map((like) => {
-                        const { liker: {id, avatar} } = like;
-                        return (
-                            <li key={id}>
-                                <Link href={`/profiles/${encodeURIComponent(id)}`}>
-                                    <a>
-                                        <UserIcon image={avatar}/>
-                                    </a>
-                                </Link>
-                            </li>
-                        )
-                    })
-                }
-
-                <div className={styles.likeButtons}>
-                    <RoundedButton text={totalLikes} icon={<AiFillHeart />}/>
-                    <RoundedButton text={"Add to favourite"}/>
-                </div>
-            </ul>
-        )
-    }
 
     function renderTags(tags){
         return (
@@ -84,15 +55,20 @@ const Activity = () => {
         )
     }
 
-
-
     if(!activity)
         return <div>Temporarily no data</div>
-    const { title, date, image, country, city, description, host: { firstName, lastName }, tags, votes } = activity;
+    
+    const { title, date, image, country, city, description, 
+            host: { firstName, lastName }, 
+            tags, votes, likes, totalLikes 
+    } = activity;
+
     const location = `${country}, ${city}`;
     const hostFullName = `${firstName} ${lastName}`;
-    const dateOptions = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' }
+    
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
     const activityDate = new Intl.DateTimeFormat('en-US', dateOptions).format(new Date(date));
+
     return (
         <div className="page">
             <Header isLoggedIn={false} isHost={false} />
@@ -100,7 +76,7 @@ const Activity = () => {
                 <div className={styles.container}>
                     <div className={styles.header}>
                         <h2>Outside * Tours | {hostFullName} | {location}</h2>
-                        {renderLastLikes(activity)}
+                        <LastLikes lastLikes={likes} totalLikes={totalLikes} />
                     </div>
                     <div className={styles.content}>
                         <div className={styles.image}>
@@ -117,18 +93,14 @@ const Activity = () => {
                                 </span>
                             </div>
                             <div className={styles.tags}>
-                                {
-                                    renderTags(tags)
-                                }
+                                { renderTags(tags) }
                             </div>
                         </div>
                         <div className={`${styles.lastUpvotes}`}>
                             <div className={styles.header}>
                                 <span className={styles.title}>Last User Votes</span>
                             </div>
-                            {
-                                renderVotes(votes)
-                            }
+                            { renderVotes(votes) }
                         </div>
                     </div>
                     <div className={styles.similarActivities}>
