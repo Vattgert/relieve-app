@@ -22,8 +22,31 @@
     transition: all 0.3s ease-in-out;
 }
 
+.rollover.darkened:after{
+    opacity: 1;
+}
+
+.rollover.darkened .image{
+    opacity: 0.5;
+}
+
+.rollover.darkened:hover::after{
+    opacity: 0.9;
+}
+
 .rollover:hover:after{
     opacity: 1;
+}
+
+.rollover .activityRating{
+    position: absolute;
+    font-size: 40px;
+    color: white;
+    z-index: 2;
+    font-weight: 700;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .rollover .imageBox{

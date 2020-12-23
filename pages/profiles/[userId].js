@@ -35,11 +35,11 @@ const Profile = () => {
         });
     }
 
-    function renderActivities(activities){
+    function renderActivities(activities, showRating = false){
         activities = activities || [];
         return activities.map((activity) => (
           <li key={activity.id}>
-            <ActivityCard activity={activity}/>
+            <ActivityCard activity={activity} showRating={showRating}/>
           </li>
           )
         )
@@ -68,18 +68,20 @@ const Profile = () => {
                 </div>
                 <div className={styles.tabsContainer}>
                     <Tabs> 
-                        <Tab label={"My Activities"} onClick={() => getActivities({ host: profile.id }) }>
+                        <Tab label={"My Activities"} onClick={ () => getActivities({ host: profile.id }) }>
                             <ul className={styles.activitiesContainer}>
                                 { renderActivities(activities) }    
                             </ul>
                         </Tab>
-                        <Tab label={"Favourites"} onClick={() => getActivities({ user: profile.id, liked: 'true' }) }>
+                        <Tab label={"Favourites"} onClick={ () => getActivities({ user: profile.id, liked: 'true' }) }>
                             <ul className={styles.activitiesContainer}>
                                 { renderActivities(activities) }    
                             </ul>
                         </Tab>
-                        <Tab label={"Votes"} onClick={() => {}}>
-
+                        <Tab label={"Votes"} onClick={ () => getActivities({ user: profile.id, voted: 'true' }) }>
+                            <ul className={styles.activitiesContainer}>
+                                { renderActivities(activities, true) }    
+                            </ul>
                         </Tab>
                         <Tab label={"Followers"} onClick={() => {}}>
 
