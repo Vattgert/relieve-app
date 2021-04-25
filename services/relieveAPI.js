@@ -1,4 +1,4 @@
-import { get } from './Api';
+import { get, post } from './Api';
 
 class RelieveApi{
     getActivities(params){
@@ -17,9 +17,9 @@ class RelieveApi{
         return get(`/profiles/${userId}`);
     }
 
-    login(){
-        this.requestOptions["method"] = "GET";
-        return this._request("/login");
+    login(credentials = { emal: "vattgert@gmail.com", password: "228lol" }){
+        console.log(credentials);
+        return post("/login", credentials).then(console.log);
     }
 }
 

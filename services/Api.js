@@ -11,10 +11,12 @@ async function send({ method, path, body }){
         //body,
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        credentials: 'include'
     });
 
     if (response.ok) {
+        console.log(response);
         return response.json();
     } else {
         console.error({ url, body });
@@ -46,5 +48,13 @@ export function get(path, params){
     return send({
         method: 'get',
         path: `${path}${paramsString}`,
+    });
+}
+
+export function post(path, body){
+    return send({
+        method: "post",
+        path,
+        body
     });
 }
