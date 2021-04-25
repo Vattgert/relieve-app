@@ -1,11 +1,14 @@
 import { Form, Field } from 'react-final-form';
 import Link from 'next/link';
+import relieveApi from '../../services/relieveAPI';
 import styles from '../../styles/LoginForm.module.css';
 
 const LoginForm = () => (
     <div className={styles.wrapper}>
         <Form
-            onSubmit={() => { console.log("Submit login."); }}
+            onSubmit={() => { 
+                relieveApi.login();
+            }}
             validate={() => { console.log("Validate login."); }}
             render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit} className={styles.form}>
