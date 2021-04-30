@@ -1,3 +1,3 @@
 import { MainLogo } from './MainLogo';
 
-export { MainLogo }
+export { MainLogo };
