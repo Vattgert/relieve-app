@@ -1,5 +1,3 @@
-const VoteResults = () => {
-
-}
+const VoteResults = () => {};
 
 export { VoteResults };

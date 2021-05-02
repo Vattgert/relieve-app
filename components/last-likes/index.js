@@ -1,5 +1,3 @@
 import { LastLikes } from './LastLikes';
 
-export {
-    LastLikes
-}
+export { LastLikes };
